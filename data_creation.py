@@ -11,7 +11,6 @@ from os import makedirs, listdir, remove
 from data_utils.build_embedding import build_embedding
 from data_utils.build_vocab import build_vocab
 from data_utils.BIO_tokenizer import Tokenizer
-from data_utils.analyser import dataset_statistics
 from data_utils.tfrecord_creator import random_n_fold_crossval_tfrec_format
 from data_utils.preprocess import preprocess_token, preprocess_complete, preprocess_simple
 
