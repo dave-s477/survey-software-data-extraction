@@ -75,22 +75,22 @@ def main(argv):
     rate = 0.5
     word_emb = "wikipedia-pubmed-and-PMC-w2v.bin"
     emb_size = 200
-    cleanup = True
+    cleanup = False
     try:
         opts, args = getopt.getopt(argv, "hn:b:d:r:w:e:c:", ["build=", "down=", "rate=", "wordemb=", "embdim=", "clean="])
     except getopt.GetoptError:
-        print('Usage: python data_creation.py -n=10 --clean=1 -b/--build=<rebuild level: data/vocab/embedding/record> -d/--down=<use downsampling: 1/0 - True/False> -r/--rate=<downsampling rate: 0.0 - 1.0> -w/--wordemb=<name (not path)> -e/--embdim=200')
+        print('Usage: python data_creation.py -n=10 -b/--build=<rebuild level: data/vocab/embedding/record> -d/--down=<use downsampling: 1/0 - True/False> -r/--rate=<downsampling rate: 0.0 - 1.0> -w/--wordemb=<name (not path)> -e/--embdim=200 --clean=0')
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-h':
-            print('Usage: python data_creation.py -n=10 --clean=1 -b/--build=<rebuild level: data/vocab/embedding/record> -d/--down=<use downsampling: 1/0 - True/False> -r/--rate=<downsampling rate: 0.0 - 1.0> -w/--wordemb=<name (not path)> -e/--embdim=200')
+            print('Usage: python data_creation.py -n=10 -b/--build=<rebuild level: data/vocab/embedding/record> -d/--down=<use downsampling: 1/0 - True/False> -r/--rate=<downsampling rate: 0.0 - 1.0> -w/--wordemb=<name (not path)> -e/--embdim=200 --clean=0')
             sys.exit()
         elif opt in ("-n"):
             n_folds = arg
         elif opt in ("-b", "--build"):
             rebuild = arg
         elif opt in ("-d", "--down"):
-            downsample = bool(arg)
+            downsample = bool(int(arg))
         elif opt in ("-r", "--rate"):
             rate = float(arg)
         elif opt in ("-w", "--wordemb"):
