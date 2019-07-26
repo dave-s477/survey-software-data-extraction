@@ -1,4 +1,4 @@
-# Bi-LSTM-CRF for Software and Database recognition
+# Bi-LSTM-CRF for Software and Database Recognition
 
 In this repository we provide the code we used to train the bi-LSTM-CRF on the extraction of software and database names.
 
@@ -9,7 +9,7 @@ Since this base model is based on word embeddings, we chose a word2vec model whi
 We used the model trained on the largest corpus available from [here](http://bio.nlplab.org/) which was trained on PubMed abstracts, PMC full texts and a Wikipedia dump. 
 
 ## Data 
-We used the largest corpus we found to be available by Duck et al. and downloaded it from its [Sourceforge repository](https://sourceforge.net/projects/bionerds/files/). 
+We used the corpus by Duck et al. available from its [Sourceforge repository](https://sourceforge.net/projects/bionerds/files/). 
 Since the amount of data samples is quite small (85 articles, 2,573 software, 1,270 database) we do not follow the original data split used by Duck et al. but instead perform a 10-fold cross validation on the data. 
 
 Since the applied method works on a sentence level rather than an article level we also transform the bag of articles into a bag of sentences for our evaluation.
@@ -25,3 +25,12 @@ Aside this distortion we believe that our evaluation will give a good indication
 For training the model we perform a downsampling of negative samples.
 Because artefact mentions are very rare only a sparse amount of sentences contains actual mentions.
 In order to construct batches that are likely to contain training data we randomly downsampled those "empty" samples but kept all containing mentions.
+
+## To replicate our results in a 10-fold cross-validation: 
+- Unpack the code 
+- Install requirements (mostly [Tensorflow](https://www.tensorflow.org/), [sklearn](https://scikit-learn.org/stable/) and the [tf_metrics](https://github.com/guillaumegenthial/tf_metrics))
+- Download pre-trained word2vec word embedding provided by Pyssalo ([http://bio.nlplab.org/](http://bio.nlplab.org/)) to folder `word_embeddings`
+- Download Duck et al. goldstandard from [https://sourceforge.net/projects/bionerds/files/goldstandard/goldstandard_all.zip/download](https://sourceforge.net/projects/bionerds/files/goldstandard/goldstandard_all.zip/download), create folder `goldstandard` with HTML files in base directory
+- run `python data_creation.py` (we assume python 3 and used version 3.7.3, no arguments required for our base setting). This step will transform the goldstandard into a suited input format for Tensorflow and place it in the folder `data`.
+- run `python apply_model.py` (no arguments required for base settings). Exhaustive results are written in the folder which contains the base data, short summary is written to standard output (Tensorflow logging is outputted).
+

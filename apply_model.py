@@ -76,11 +76,11 @@ def main(argv):
     ent_type_mean, ent_type_std = macro_average(df.loc['ent_type',:], save_location=data_location)
     print("""
         Evaluation had the following results for the cross validation:
-        Ent Type Recogntion:
+        Partial Recogntion:
         Mean Precision: {} (std {}),
         Mean Recall: {} (std {}),
         Mean FScore: {} (std {}).
-        Strict Recognition:
+        Exact Recognition:
         Mean Precision: {} (std {}),
         Mean Recall: {} (std {}),
         Mean FScore: {} (std {}).""".format(round(strict_mean.precision, 2), 
