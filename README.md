@@ -14,16 +14,16 @@ Since the amount of data samples is quite small (85 articles, 2,573 software, 1,
 
 Since the applied method works on a sentence level rather than an article level we also transform the bag of articles into a bag of sentences for our evaluation.
 We are aware that this can positively benefit the performance in the following case:
-If a single articles mentions the same software multiple times the samples might be distributed to different folds in a bag of sentences which allows potentially more learning based solely on names. 
+If a single article mentions the same software multiple times the samples might be distributed to different folds in a bag of sentences which allows potentially more learning based solely on names. 
 Multiple mentions of the same software in an article are generally not common but still present in the corpus by Duck et al. because they include articles from the domain of bioinformatics. 
 Those articles sometimes introduce new software which is then mentioned multiple times in the corpus. 
-For the artefact database this problem is less prominent.
+For the artifact database this problem is less prominent.
 
 Aside this distortion we believe that our evaluation will give a good indication of how well neural network based methods can perform on this extraction task, especially if they can be provided with a larger training corpus.  
 
 ## Training
 For training the model we perform a downsampling of negative samples.
-Because artefact mentions are very rare only a sparse amount of sentences contains actual mentions.
+Because artifact mentions are very rare only a sparse amount of sentences contains actual mentions.
 In order to construct batches that are likely to contain training data we randomly downsampled those "empty" samples but kept all containing mentions.
 
 ## To replicate our results in a 10-fold cross-validation: 
