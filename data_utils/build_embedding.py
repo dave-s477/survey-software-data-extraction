@@ -2,7 +2,7 @@
 import numpy as np
 import gensim
 
-from pathlib2 import Path
+from pathlib import Path
 from os.path import join
 
 def build_embedding(embedding_model, embedding_size, output_dir, base_name='data'):

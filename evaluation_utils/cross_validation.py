@@ -5,7 +5,7 @@ import csv
 import numbers
 import warnings
 
-from pathlib2 import Path
+from pathlib import Path
 from os.path import join, exists
 from os import makedirs, listdir, remove
 
@@ -70,8 +70,7 @@ def cross_validation(model, model_name, params, config, do_train=True, do_eval=T
         if do_train:
             print("Starting training with evaluation set {}".format(test_set))
             tfrec_train_input_fn = tfrec_data_input_fn(training_set, batch_size=params['batch_size'], num_epochs=params['epochs'], shuffle=True, repeat=True)
-            hook = tf.contrib.estimator.stop_if_no_increase_hook(classifier, 'f1', 800, min_steps=8000, run_every_secs=180)
-            classifier.train(input_fn=tfrec_train_input_fn, hooks=[hook])
+            classifier.train(input_fn=tfrec_train_input_fn)
 
         if do_eval:
             print("Starting evaluation on {}".format(test_set))
