@@ -71,7 +71,7 @@ def main(argv):
     model, result = run_cross_validation(params, config, label_mapping, do_train=train, do_eval=evalu, do_predict=predi)
 
     cross_val_scores = base_scores(result, save_location=data_location)
-    df = get_main_scores(df)
+    df = get_main_scores(cross_val_scores)
     strict_mean, strict_std = macro_average(df.loc['strict',:], save_location=data_location)
     ent_type_mean, ent_type_std = macro_average(df.loc['ent_type',:], save_location=data_location)
     print("""
