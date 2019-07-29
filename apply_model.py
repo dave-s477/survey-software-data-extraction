@@ -76,25 +76,25 @@ def main(argv):
     ent_type_mean, ent_type_std = macro_average(df.loc['ent_type',:], save_location=data_location)
     print("""
         Evaluation had the following results for the cross validation:
-        Partial Recogntion:
+        Partial Recognition:
         Mean Precision: {} (std {}),
         Mean Recall: {} (std {}),
         Mean FScore: {} (std {}).
         Exact Recognition:
         Mean Precision: {} (std {}),
         Mean Recall: {} (std {}),
-        Mean FScore: {} (std {}).""".format(round(strict_mean.precision, 2), 
-                                            round(strict_std.precision, 2), 
-                                            round(strict_mean.recall, 2), 
-                                            round(strict_std.recall, 2), 
-                                            round(strict_mean.f1, 2), 
-                                            round(strict_std.f1, 2), 
-                                            round(ent_type_mean.precision, 2), 
+        Mean FScore: {} (std {}).""".format(round(ent_type_mean.precision, 2), 
                                             round(ent_type_std.precision, 2),
                                             round(ent_type_mean.recall, 2), 
                                             round(ent_type_std.recall, 2),
                                             round(ent_type_mean.f1, 2),
-                                            round(ent_type_std.f1, 2)))
+                                            round(ent_type_std.f1, 2),
+                                            round(strict_mean.precision, 2), 
+                                            round(strict_std.precision, 2), 
+                                            round(strict_mean.recall, 2), 
+                                            round(strict_std.recall, 2), 
+                                            round(strict_mean.f1, 2), 
+                                            round(strict_std.f1, 2)))
 
 if __name__ == "__main__":
    main(sys.argv[1:]) 
