@@ -1,0 +1,5 @@
+This file lists existing code this project is based on.
+
+1. 'model/bi_lstm_crf.py' is partially based on code available from https://github.com/guillaumegenthial/tf_ner under Apache-2.0 License.
+
+2. 'evaluation_utils/evaluation.py' is partially based on code available from https://github.com/davidsbatista/NER-Evaluation under GPL-3.0 License. 
